@@ -10,8 +10,10 @@ public class Main
 {
     public static void main( String[] args ) throws IOException
     {
-        SeleniumOperations.officeworks_registration_page("https://www.officeworks.com.au/app/identity/create-account");
+        //SeleniumOperations.officeworks_registration_page("https://www.officeworks.com.au/app/identity/create-account");
         //SeleniumOperations.skechers_registration_page("https://www.skechers.com.au/create-account");
         //ReletiveOperators.officeworks_registration_page_reletive_locator("https://www.officeworks.com.au/app/identity/create-account");
+        FirefoxWebDriverSeleniumOperation.officeworks_registration_page("https://www.officeworks.com.au/app/identity/create-account");
+        FirefoxWebDriverSeleniumOperation.skechers_registration_page("https://www.skechers.com.au/create-account");
     }
 }
