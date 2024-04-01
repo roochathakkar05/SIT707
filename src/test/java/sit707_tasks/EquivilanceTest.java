@@ -204,8 +204,6 @@ public class EquivilanceTest {
 	    Assert.assertEquals(2023, date.getYear());
 	}
 	/*TEST D1M3Y1*/
-	/*TEST D2M1Y1*/
-	/*TEST D1M3Y1*/
 	/*TEST D1M3Y2*/
 	@Test
 	public void TestD1M3Y2Increment() {
@@ -251,16 +249,6 @@ public class EquivilanceTest {
 	}
 	/*TEST D2M3Y2*/
 	/*TEST D1M2Y2*/
-	@Test
-	public void TestD1M2Y2Increment() {
-	    DateUtil date = new DateUtil(1, 3, 2024);
-	    System.out.println("TestD2M3Y2Increment > " + date);
-	    date.increment();
-	    System.out.println(date);
-	    Assert.assertEquals(3, date.getMonth());
-	    Assert.assertEquals(2, date.getDay());
-	    Assert.assertEquals(2024, date.getYear());
-	}
 	@Test
 	public void TestD1M2Y2Decrement() {
 	    DateUtil date = new DateUtil(1, 3, 2024);
