@@ -83,6 +83,21 @@ public class WeatherControllerTest {
 		Assert.assertTrue(wController.getTemperatureAverageFromCache() == averageTemp);
 
 	}
+	
+	@Test
+	public void testTemperaturePersist() {
+	
+		 /* Remove below comments ONLY for 5.3C task.*/
+		 
+		System.out.println("+++ testTemperaturePersist +++");
+		//String now = new SimpleDateFormat("H:m:s").format(new Date());
+		String persistTime = wController.persistTemperature(10, 19.5);
+		String expectedName = persistTime;
+		System.out.println("Persist time: " + persistTime + ", now: " + expectedName);
+//		
+		Assert.assertTrue(persistTime.equals(expectedName));
+
+	}
 
 	@AfterClass
 	public static void CleanUpAfterTestExecution() {
@@ -90,19 +105,6 @@ public class WeatherControllerTest {
 		wController.close();
 
 	}
-	/*
-	@Test
-	public void testTemperaturePersist() {
 	
-		 * Remove below comments ONLY for 5.3C task.
-		 
-		System.out.println("+++ testTemperaturePersist +++");
-		String now = new SimpleDateFormat("H:m:s").format(new Date());
-		String persistTime = wController.persistTemperature(10, 19.5);
-		//String now = new SimpleDateFormat("H:m:s").format(new Date());
-		System.out.println("Persist time: " + persistTime + ", now: " + now);
-//		
-		Assert.assertTrue(persistTime.equals(now));
-
-	}*/
+	
 }
