@@ -1,5 +1,9 @@
 package sit707_tasks;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+
 /**
  * @author Ahsan Habib
  */
@@ -105,5 +109,37 @@ public class DateUtil {
 	public String toString() {
 		return day + " " + MONTHS[month - 1] + " " + year;
 	}
+	/*
+	 * Calculate Days to the next Holiday
+	 */
+	public String daysUntilNextHoliday(Holiday holiday) {
+	    int daysUntilNextHoliday = 0;
+	    boolean Holidayfound = false;
+	    DateUtil nextDate = new DateUtil(day, month, year);
+	    if(holiday.getHolidays().isEmpty())
+	    {
+	    	return "No Holidays Added";
+	    }
+	    else {
+	    	while (Holidayfound == false) 
+		    {
+		        if (holiday.isHoliday(nextDate.getMonth(), nextDate.getDay())) {
+		        	//System.out.println(nextDate);
+		        	Holidayfound = true;
+		        	if(daysUntilNextHoliday == 0 ) {
+		        		return "Today is a Holiday";
+		        	}
+		        	return String.valueOf(daysUntilNextHoliday);
+		        }
+		        nextDate.increment();
+		       //System.out.println(nextDate);
+		        daysUntilNextHoliday++;
+		        //System.out.println(daysUntilNextHoliday);
+		    }
+	    	
+	    }
+		return String.valueOf(daysUntilNextHoliday);
+	}
 	
 }
+
