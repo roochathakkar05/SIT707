@@ -34,13 +34,28 @@ public class task {
 		Status = status;
 	}
 	public task(String name, LocalDate deadline, String status) {
-		this.taskName = name;
-		this.Deadline = deadline;
-		this.Status = status;
+		LocalDate today = LocalDate.now();
+		LocalDate mindate = LocalDate.of(2024,1,1);
+		if(name == null || name.isEmpty() || name.isBlank() ) {
+			throw new IllegalArgumentException("Error: Task name is blank.");
+        }
+        else if(!status.equals("Not Started")) {
+        	throw new IllegalArgumentException("Error: Task status should be 'Not Started' when adding a Task.");
+            
+        }
+        else if(deadline.isBefore(mindate) || deadline.isAfter(today)){
+        	throw new IllegalArgumentException("Error: Enter a date between 1-1-2024 and today.");
+        }
+        else {
+            this.taskName = name;
+            this.Deadline = deadline;
+            this.Status = status;
+        }
 	}
 	public String ChangeStatus(user User,String status) {
 		if(User.getRoleOfUser() == "Student") {
-			if(status == "Submitted" || status == "Not Started" || status == "Working On It") {
+			if (status.equalsIgnoreCase("Submitted") || status.equalsIgnoreCase("Not Started")
+                    || status.equalsIgnoreCase("Working On It")) {
 				this.Status = status;
 				return "Successfully";
 			}
@@ -49,7 +64,8 @@ public class task {
 			}
 		}
 		else {
-			if(status == "Completed" || status == "Failed" || status == "Re-Submit") {
+			if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Failed")
+                    || status.equalsIgnoreCase("Re-Submit")){
 				this.Status = status;
 				return "Successfully";
 			}
@@ -79,5 +95,4 @@ public class task {
 		}
 		
 	}
-
 }

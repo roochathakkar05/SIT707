@@ -28,8 +28,8 @@ public class TestCases {
     @Before
     public void setUp() {
         taskInbox = new TaskInbox();
-        sampleTask = new task("Sample Task", LocalDate.of(2024, 5, 15), "Not-Started");
-        sampleTask2 = new task("Sample Task", LocalDate.of(2024, 5, 18), "Working On It");
+        sampleTask = new task("Sample Task", LocalDate.of(2024, 4, 15), "Not Started");
+        sampleTask2 = new task("Sample Task", LocalDate.of(2024, 4, 18), "Not Started");
     }
     
     /*
@@ -154,8 +154,6 @@ public class TestCases {
         assertTrue(taskInbox.getTasks().get(0).getChat().contains(AddMsg));
         assertTrue(taskInbox.getTasks().get(0).getChat().contains(AddMsg2));
     }
-    /*
-     * Test Task 
-     */
+    
 
 }

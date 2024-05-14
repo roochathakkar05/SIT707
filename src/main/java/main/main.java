@@ -7,10 +7,10 @@ public class main {
 	public static void main(String[] args) {
 		//Create a Task Inbox
 		TaskInbox TaskBox = new TaskInbox();
-		task Task1 = new task("Task 1.1P",LocalDate.of(2024, 5, 10),"Not-Started");
-		task Task2 = new task("Task 2.1P",LocalDate.of(2024, 5, 20),"Not-Started");
-		task Task3 = new task("Task 3.1P",LocalDate.of(2024, 5, 30),"Not-Started");
-		task Task4 = new task("Task 4.1P",LocalDate.of(2024, 6, 10),"Not-Started");
+		task Task1 = new task("Task 1.1P",LocalDate.of(2024, 5, 10),"Not Started");
+		task Task2 = new task("Task 2.1P",LocalDate.of(2024, 5, 11),"Not Started");
+		task Task3 = new task("Task 3.1P",LocalDate.of(2024, 5, 12),"Not Started");
+		task Task4 = new task("Task 4.1P",LocalDate.of(2024, 5, 11),"Not Started");
 		TaskBox.AddNewTask(Task1);
 		TaskBox.AddNewTask(Task2);
 		TaskBox.AddNewTask(Task3);
@@ -34,7 +34,7 @@ public class main {
 		System.out.println("Status Changed: "+ StatusChangeValueStdIC);
 		TaskBox.ViewAllTasks();
 		//Add New Task
-		task Task5 = new task("Task 5.1P",LocalDate.of(2024, 6, 20),"Not-Started");
+		task Task5 = new task("Task5.1P",LocalDate.of(2024, 4, 20),"Not Started");
 		TaskBox.AddNewTask(Task5);
 		TaskBox.ViewAllTasks();
 		//Remove Task

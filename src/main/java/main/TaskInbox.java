@@ -26,14 +26,21 @@ public class TaskInbox {
 	
 	public void ViewAllTasks() {
 		System.out.println("All Tasks");
-		System.out.println("  Task Name    Status         Deadline");
-		for(int i=0; i< Tasks.size(); i++) {
-			System.out.println(i+ " " + Tasks.get(i).getTaskName()+"    "+Tasks.get(i).getStatus()+"    "+Tasks.get(i).getDeadline());
+		if(Tasks.isEmpty()) {
+			System.out.println("No Tasks Exist");
+		}
+		else {	
+			//System.out.println("  Task Name    Status         Deadline");
+			for(int i=0; i< Tasks.size(); i++) {
+				System.out.println(i+ " " + Tasks.get(i).getTaskName()+" "+Tasks.get(i).getStatus()+" "+Tasks.get(i).getDeadline());
+			}
 		}
 		
 	}
 	public void AddNewTask(task NewTask) {
-		Tasks.add(NewTask);
+		//if(NewTask.getTaskName() != null && NewTask.getStatus() != null && NewTask.getDeadline() != null) {
+			Tasks.add(NewTask);
+		//}
 	}
 	public void RemoveTask(task TasktoRemove) {
 		Tasks.remove(TasktoRemove);
