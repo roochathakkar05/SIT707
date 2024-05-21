@@ -13,6 +13,7 @@ on:
     branches: [ "Task_10.1P" ]
   pull_request:
     branches: [ "Task_10.1P" ]
+  workflow_dispatch:
 
 jobs:
   build:
