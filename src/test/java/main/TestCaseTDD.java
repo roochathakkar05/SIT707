@@ -17,8 +17,6 @@ public class TestCaseTDD {
 	private TaskInbox taskInbox;
 	private task sampleTask;
 	private task sampleTask2;
-    private static user Student;
-    private static user Teacher;
     	
 
 	@Before
