@@ -8,6 +8,8 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.BeforeClass;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -17,7 +19,14 @@ public class TestCaseTDD {
 	private TaskInbox taskInbox;
 	private task sampleTask;
 	private task sampleTask2;
-    	
+	private static user Student;
+	private static user Teacher;
+	    
+	@BeforeClass
+	public static void CreateUsers() {
+	    Student = new user("Roocha","SIT707");
+		Teacher = new user("Teacher1");
+	}
 
 	@Before
 	public void setUp() {
@@ -27,7 +36,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void testAddNewTask() {
+	public void testNewTask() {
 		int initialSize = taskInbox.getTasks().size();
 		taskInbox.AddNewTask(sampleTask);
 		assertEquals(initialSize + 1, taskInbox.getTasks().size());
@@ -35,7 +44,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void testRemoveTask() {
+	public void testDeleteTask() {
 		taskInbox.AddNewTask(sampleTask);
 		taskInbox.AddNewTask(sampleTask2);
 		int initialSize = taskInbox.getTasks().size();
@@ -46,7 +55,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void TestViewAllTasks() {
+	public void TestViewTasks() {
 		int initialSize = taskInbox.getTasks().size();
 		taskInbox.AddNewTask(sampleTask);
 		taskInbox.AddNewTask(sampleTask2);
@@ -61,7 +70,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void ChangeStatusStudentSucessTest() {
+	public void ChangeStatusStudentSubmittedTest() {
 		taskInbox.AddNewTask(sampleTask);
 		String StatusChangeValueStd = taskInbox.getTasks().get(0).ChangeStatus(Student, "Submitted");
 		System.out.println("Status Changed: " + StatusChangeValueStd);
@@ -70,7 +79,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void ChangeStatusStudentFailedTest() {
+	public void ChangeStatusStudentCompletedTest() {
 		taskInbox.AddNewTask(sampleTask);
 		String initialStatus = taskInbox.getTasks().get(0).getStatus();
 		String StatusChangeValueStd = taskInbox.getTasks().get(0).ChangeStatus(Student, "Completed");
@@ -80,7 +89,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void ChangeStatusTeacherSucessTest() {
+	public void ChangeStatusTeacherFailedTest() {
 		taskInbox.AddNewTask(sampleTask);
 		String StatusChangeValueStd = taskInbox.getTasks().get(0).ChangeStatus(Teacher, "Failed");
 		System.out.println("Status Changed: " + StatusChangeValueStd);
@@ -89,7 +98,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void ChangeStatusTeacherFailedTest() {
+	public void ChangeStatusTeacherWorkingOnItTest() {
 		taskInbox.AddNewTask(sampleTask);
 		String initialStatus = taskInbox.getTasks().get(0).getStatus();
 		String StatusChangeValueStd = taskInbox.getTasks().get(0).ChangeStatus(Teacher, "Working On It");
@@ -99,7 +108,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void TestAddMessage() {
+	public void AddMessageTest() {
 		message AddMsg = new message(Student, "I need help with this task");
 		taskInbox.AddNewTask(sampleTask);
 		int initialSize = taskInbox.getTasks().get(0).getChat().size();
@@ -110,7 +119,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void EmptyChatTest() {
+	public void NoChatTest() {
 		taskInbox.AddNewTask(sampleTask);
 		assertTrue(taskInbox.getTasks().get(0).getChat().isEmpty());
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -123,7 +132,7 @@ public class TestCaseTDD {
 	}
 
 	@Test
-	public void TestViewAllChats() {
+	public void TestViewChats() {
 		message AddMsg = new message(Student, "I need help with this task.");
 		message AddMsg2 = new message(Teacher, "Sure! What part are you confused with?");
 		taskInbox.AddNewTask(sampleTask);
