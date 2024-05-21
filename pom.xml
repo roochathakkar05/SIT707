@@ -4,4 +4,10 @@
   <artifactId>Week10TaskTDD</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Week10TaskTDD</name>
+  
+      <properties>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+    
 </project>
