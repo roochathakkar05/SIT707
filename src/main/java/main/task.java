@@ -36,7 +36,7 @@ public class task {
 	public task(String name, LocalDate deadline, String status) {
 		LocalDate today = LocalDate.now();
 		LocalDate mindate = LocalDate.of(2024,1,1);
-		if(name == null || name.isEmpty() || name.isBlank() ) {
+		if(name == null || name.isEmpty()) {
 			throw new IllegalArgumentException("Error: Task name is blank.");
         }
         else if(!status.equals("Not Started")) {
