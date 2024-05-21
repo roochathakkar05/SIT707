@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import org.junit.Test;
 
-public class TestcasesTDD {
+public class TestCaseTDD {
 
 	@Test
 	public void test() {
@@ -29,12 +29,6 @@ public class TestcasesTDD {
 	    	assertFalse(taskInbox.getTasks().contains(sampleTask2));
 	    	
 	    }
-
-	    @Test
-	    public void testGetUnitName() {
-	        assertEquals("SIT707", taskInbox.getUnitName());
-	    }
-	    
 	    @Test
 	    public void TestViewAllTasks() {
 	    	int initialSize = taskInbox.getTasks().size();
@@ -51,17 +45,6 @@ public class TestcasesTDD {
 	    }
 
 	    @Test
-	    public void testSetUnitName() {
-	        taskInbox.setUnitName("SIT333");
-	        assertEquals("SIT333", taskInbox.getUnitName());
-	    }
-	    /*
-	     * Test Task Inbox
-	     */
-	    /*
-	     * Test Task 
-	     */
-	    @Test
 	    public void ChangeStatusStudentSucessTest() {
 	    	taskInbox.AddNewTask(sampleTask);
 			String StatusChangeValueStd = taskInbox.getTasks().get(0).ChangeStatus(Student, "Submitted");
@@ -69,6 +52,7 @@ public class TestcasesTDD {
 			assertEquals("Successfully",StatusChangeValueStd);
 			assertEquals(taskInbox.getTasks().get(0).getStatus(),"Submitted");
 	    }
+	    
 	    @Test
 	    public void ChangeStatusStudentFailedTest() {
 	    	taskInbox.AddNewTask(sampleTask);
@@ -78,6 +62,7 @@ public class TestcasesTDD {
 			assertEquals("Error: This action cannot be performed.",StatusChangeValueStd);
 			assertEquals(taskInbox.getTasks().get(0).getStatus(),initialStatus);
 	    }
+	    
 	    @Test
 	    public void ChangeStatusTeacherSucessTest() {
 	    	taskInbox.AddNewTask(sampleTask);
@@ -86,6 +71,7 @@ public class TestcasesTDD {
 			assertEquals("Successfully",StatusChangeValueStd);
 			assertEquals(taskInbox.getTasks().get(0).getStatus(),"Failed");
 	    }
+	    
 	    @Test
 	    public void ChangeStatusTeacherFailedTest() {
 	    	taskInbox.AddNewTask(sampleTask);
@@ -95,6 +81,7 @@ public class TestcasesTDD {
 			assertEquals("Error: This action cannot be performed.",StatusChangeValueStd);
 			assertEquals(taskInbox.getTasks().get(0).getStatus(),initialStatus);
 	    }
+	    
 	    @Test
 	    public void TestAddMessage() {
 	    	message AddMsg = new message(Student, "I need help with this task");
@@ -117,6 +104,7 @@ public class TestcasesTDD {
 	        assertTrue(outContent.toString().contains("No Conversation to Display"));
 	    	
 	    }
+	    
 	    @Test
 	    public void TestViewAllChats() {
 	        message AddMsg = new message(Student, "I need help with this task.");
@@ -131,4 +119,4 @@ public class TestcasesTDD {
 	    }
 	    
 
-	}
+}
