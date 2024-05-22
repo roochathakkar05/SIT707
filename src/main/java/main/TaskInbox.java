@@ -37,13 +37,23 @@ public class TaskInbox {
 		}
 		
 	}
-	public void AddNewTask(task NewTask) {
-		//if(NewTask.getTaskName() != null && NewTask.getStatus() != null && NewTask.getDeadline() != null) {
+	public String AddNewTask(task NewTask, user User) {
+		if(User.getRoleOfUser() == "Teacher") {
 			Tasks.add(NewTask);
-		//}
+			return "Success";
+		}
+		else {
+			return "Error: Your role does not allow this";
+		}
 	}
-	public void RemoveTask(task TasktoRemove) {
-		Tasks.remove(TasktoRemove);
+	public String RemoveTask(task TasktoRemove, user User) {
+		if(User.getRoleOfUser() == "Teacher") {
+			Tasks.remove(TasktoRemove);
+			return "Success";
+		}
+		else {
+			return "Error: Your role does not allow this";
+		}
 	}
 	
 	
