@@ -13,6 +13,10 @@ public class Node1DriverClass {
         users.add(new user("Roocha", "SIT707", "pass123"));
         users.add(new user("Teacher", "pass123"));
     }
+    
+    public List<task> viewAllTasksDriver() {
+        return node2.getTasksDriver();
+    }
 
     public String loginDriver(String username, String password) {
         for (user userr : users) {
@@ -21,10 +25,6 @@ public class Node1DriverClass {
             }
         }
         return "Login failed";
-    }
-
-    public List<task> viewAllTasksDriver() {
-        return node2.getTasksDriver();
     }
 
     // Integrate with Node2DriverClass
@@ -42,6 +42,12 @@ public class Node1DriverClass {
 
     public void addMessageDriver(task task, message message) {
         node2.addMessageDriver(task, message);
+    }
+	 public List<message> ViewMessageDriver(task Task) {
+	        return node2.ViewMessageDriver(Task);
+	 }
+    public String ViewSelectedTaskDriver(task Task) {
+    	return node2.ViewSelectedTaskDriver(Task);
     }
 
 }

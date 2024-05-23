@@ -50,6 +50,28 @@ public class BottomsUpTest {
 	        assertEquals(initialSize + 1, Task.getChat().size());
 	        assertTrue(Task.getChat().contains(msg));
 	    }
+	    @Test
+	    public void testViewMessagesDriver() {
+	        LocalDate deadline = LocalDate.of(2024, 5, 1);
+	        task Task = new task("Test Task", deadline, "Not Started");
+	        user Student = new user("Roocha","SIT707","pass123");
+	        message msg = new message(Student, "I need help with this task!");
+	        
+	        Node3.AddMessageDriver(Task,msg);
+	        List <message> viewchat = Node3.ViewMessageDriver(Task);
+	        
+	        assertEquals(1, Task.getChat().size());
+	        assertEquals("I need help with this task!", viewchat.get(0).getMessage());
+	    }
+	    @Test
+	    public void testViewSelectedTaskDriver() {
+	    	LocalDate deadline = LocalDate.of(2024, 5, 1);
+	        task Task = new task("Test Task", deadline, "Not Started");
+	        String result = Node3.ViewSelectedTask(Task);
+	        
+	        assertEquals("Test Task 2024-05-01 Not Started",result);
+	    	
+	    }
 	    @Test(expected = IllegalArgumentException.class)
 	    public void testAddMessagesDriverFail() {
 	        LocalDate deadline = LocalDate.of(2024, 5, 1);
@@ -125,6 +147,30 @@ public class BottomsUpTest {
 	        assertEquals(initialSize + 1, task.getChat().size());
 	        assertTrue(task.getChat().contains(msg));
 	    }
+	    @Test
+	    public void testViewMessagesIntergration() {
+	    	user Teacher = new user("Teacher","pass123");
+	        node2.addTaskDriver("Test Task", LocalDate.of(2024, 5, 1), "Not Started",Teacher);
+	        task task = node2.getTasksDriver().get(0);
+	        user Student = new user("Roocha","SIT707","pass123");
+	        message msg = new message(Student, "I need help with this task!");
+	        
+	        node2.addMessageDriver(task,msg);
+	        List <message> viewchat = node2.ViewMessageDriver(task);
+	        
+	        assertEquals(1, task.getChat().size());
+	        assertEquals("I need help with this task!", viewchat.get(0).getMessage());
+	    }
+	    @Test
+	    public void testViewSelectedTaskIntegration() {
+	    	user Teacher = new user("Teacher","pass123");
+	        node2.addTaskDriver("Test Task", LocalDate.of(2024, 5, 1), "Not Started",Teacher);
+	        task task = node2.getTasksDriver().get(0);
+	        String result = node2.ViewSelectedTaskDriver(task);
+	        
+	        assertEquals("Test Task 2024-05-01 Not Started",result);
+	    	
+	    }
 	    /*
 		 * Level 2 Node Add and Remove Tasks
 		 */
@@ -149,6 +195,15 @@ public class BottomsUpTest {
 	      
 	        assertEquals(1, node1.viewAllTasksDriver().size());
 	        assertEquals("Test Task 1", node1.viewAllTasksDriver().get(0).getTaskName());
+	    }
+	    @Test
+	    public void testAddTaskIntergrationNode2() {
+	    	user Teacher = new user("Teacher","pass123");
+	    	node1.addTaskDriver("Test Task 1", LocalDate.of(2024, 5, 1), "Not Started", Teacher);
+	        
+	        assertEquals(1, node1.viewAllTasksDriver().size());
+	        assertEquals("Test Task 1", node1.viewAllTasksDriver().get(0).getTaskName());;
+	    	
 	    }
 	    @Test
 	    public void testRemoveTaskIntergrationNode2() {
@@ -187,6 +242,30 @@ public class BottomsUpTest {
 	        assertEquals(initialSize + 1, task.getChat().size());
 	        assertTrue(task.getChat().contains(msg));
 	    }
-	    
+	    @Test
+	    public void testViewMessagesIntergrationNode1() {
+	    	user Teacher = new user("Teacher","pass123");
+	        node1.addTaskDriver("Test Task", LocalDate.of(2024, 5, 1), "Not Started",Teacher);
+	        task task = node1.viewAllTasksDriver().get(0);
+	        user Student = new user("Roocha","SIT707","pass123");
+	        message msg = new message(Student, "I need help with this task!");
+	        
+	        node1.addMessageDriver(task,msg);
+	        List <message> viewchat = node1.ViewMessageDriver(task);
+	        
+	        assertEquals(1, task.getChat().size());
+	        assertEquals("I need help with this task!", viewchat.get(0).getMessage());
+	    }
+	    @Test
+	    public void testViewSelectedTaskIntegrationNode1(){
+	    	user Teacher = new user("Teacher","pass123");
+	    	node1.addTaskDriver("Test Task", LocalDate.of(2024, 5, 1), "Not Started",Teacher);
+	    	task task = node1.viewAllTasksDriver().get(0);
+	        String result = node1.ViewSelectedTaskDriver(task);
+	        
+	        assertEquals("Test Task 2024-05-01 Not Started",result);
+	    	
+	    }
+
 	}
 

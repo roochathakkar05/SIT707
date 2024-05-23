@@ -37,6 +37,10 @@ public class main {
 		task Task5 = new task("Task5.1P",LocalDate.of(2024, 4, 20),"Not Started");
 		TaskBox.AddNewTask(Task5,Teacher);
 		TaskBox.ViewAllTasks();
+		//View Selected Task Details
+		task selectedTask = TaskBox.getTasks().get(2);
+		String output = selectedTask.ViewDetails();
+		System.out.println(output);
 		//Remove Task
 		TaskBox.RemoveTask(Task2,Student);
 		TaskBox.ViewAllTasks();

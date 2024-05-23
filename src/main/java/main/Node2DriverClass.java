@@ -26,5 +26,11 @@ public class Node2DriverClass {
 	 public void addMessageDriver(task task, message message) {
 	        node3.AddMessageDriver(task, message);
 	 }
+	 public List<message> ViewMessageDriver(task Task) {
+	        return node3.ViewMessageDriver(Task);
+	 }
+	 public String ViewSelectedTaskDriver(task Task) {
+	    	return node3.ViewSelectedTask(Task);
+	 }
 	
 }

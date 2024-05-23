@@ -95,4 +95,7 @@ public class task {
 		}
 		
 	}
+	public String ViewDetails() {
+    	return this.getTaskName() + " " + this.getDeadline() + " " + this.getStatus();
+    }
 }
